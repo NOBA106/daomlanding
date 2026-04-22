@@ -524,7 +524,8 @@ const schema = [
         </div>
 
         <!-- Form -->
-        <form class="space-y-5" action="#" method="post">
+        <form id="cta-form" class="space-y-5">
+          <input type="hidden" name="keyword" value={caseData.title.replace(/ 사칭.*/, '')} />
           <div>
             <label for="name" class="block text-xs font-bold text-white/50 uppercase tracking-wider mb-2">이름</label>
             <input
@@ -564,7 +565,7 @@ const schema = [
           <!-- Main CTA Button -->
           <button
             type="submit"
-            class="w-full mt-2 py-4 bg-crimson text-white text-base font-bold rounded-lg relative overflow-hidden group transition-all hover:shadow-[0_0_30px_rgba(255,42,68,0.4)]"
+            class="w-full mt-2 py-4 bg-crimson text-white text-base font-bold rounded-lg relative overflow-hidden group transition-all hover:shadow-[0_0_30px_rgba(255,42,68,0.4)] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:shadow-none"
           >
             <span class="relative z-10">피해 접수하기</span>
             <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
@@ -1003,6 +1004,52 @@ const schema = [
         btn.textContent = '실패';
         btn.disabled = false;
         setTimeout(() => { btn.textContent = origText; }, 3000);
+      }
+    });
+  }
+
+  // Form webhook submission
+  const ctaForm = document.getElementById('cta-form') as HTMLFormElement;
+  if (ctaForm) {
+    ctaForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = ctaForm.querySelector('button[type="submit"]') as HTMLButtonElement;
+      const btnText = btn.querySelector('span');
+      const origText = btnText?.textContent || '';
+
+      const fd = new FormData(ctaForm);
+      const name = fd.get('name') as string;
+      const phone = fd.get('phone') as string;
+      const amount = fd.get('amount') as string;
+      const keyword = fd.get('keyword') as string;
+
+      btn.disabled = true;
+      if (btnText) btnText.textContent = '접수 중...';
+
+      try {
+        const res = await fetch('https://api.daom88.com/api/v1/webhook/landing-page/615e4b58-0368-4113-b84a-8214e0dbceca', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name,
+            phone,
+            keyword,
+            amount,
+            platform: 'DAY 금융사기 피해회복 솔루션',
+            partner: '데이',
+          }),
+        });
+
+        if (res.ok) {
+          if (btnText) btnText.textContent = '접수 완료!';
+          ctaForm.reset();
+          setTimeout(() => { if (btnText) btnText.textContent = origText; btn.disabled = false; }, 3000);
+        } else {
+          throw new Error('전송 실패');
+        }
+      } catch {
+        if (btnText) btnText.textContent = '전송 실패 - 다시 시도해주세요';
+        setTimeout(() => { if (btnText) btnText.textContent = origText; btn.disabled = false; }, 3000);
       }
     });
   }
