@@ -1027,7 +1027,7 @@ const schema = [
       if (btnText) btnText.textContent = '접수 중...';
 
       try {
-        const res = await fetch('https://api.daom88.com/api/v1/webhook/landing-page/615e4b58-0368-4113-b84a-8214e0dbceca', {
+        const res = await fetch('/api/webhook', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
