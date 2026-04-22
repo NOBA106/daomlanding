@@ -1,0 +1,209 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+
+const siteName = '금융범죄 환수센터';
+---
+
+<BaseLayout
+  title={`개인정보 처리방침 | ${siteName}`}
+  description={`${siteName}의 개인정보 처리방침입니다. 수집하는 개인정보 항목, 처리 목적, 보유 기간 등을 안내합니다.`}
+>
+  <Header slot="header" siteName={siteName} />
+
+  <div class="max-w-3xl mx-auto px-6 sm:px-8 lg:px-10 pb-20 md:pb-32" style="padding-top: 100px;">
+
+    <!-- Page Header -->
+    <div class="mb-20 pb-10 border-b border-white/[0.08]">
+      <h1 class="text-2xl font-bold text-white mb-4 tracking-tight">개인정보 처리방침</h1>
+      <p class="text-white/35 text-base">시행일: 2026년 4월 1일</p>
+    </div>
+
+    <div class="space-y-20 text-base text-white/55 leading-[1.95]">
+
+      <!-- 1조 -->
+      <section class="pt-4">
+        <h2 class="text-2xl font-bold text-white mb-6 pb-4 border-b border-crimson/20"><span class="keyword-highlight">제1조 (총칙)</span></h2>
+        <p>{siteName}(이하 "회사")는 「개인정보 보호법」 제30조에 따라 정보주체의 개인정보를 보호하고 이와 관련한 고충을 신속하고 원활하게 처리할 수 있도록 하기 위하여 다음과 같이 개인정보 처리방침을 수립·공개합니다.</p>
+      </section>
+
+      <!-- 2조 -->
+      <section class="pt-4">
+        <h2 class="text-2xl font-bold text-white mb-6 pb-4 border-b border-crimson/20"><span class="keyword-highlight">제2조 (수집하는 개인정보의 항목 및 수집 방법)</span></h2>
+        <p class="mb-5">회사는 법률 상담 및 사건 접수를 위해 다음과 같은 개인정보를 수집합니다.</p>
+        <div class="overflow-x-auto rounded-lg border border-white/[0.08]">
+          <table class="w-full border-collapse">
+            <thead>
+              <tr class="bg-white/[0.05]">
+                <th class="border-b border-white/[0.08] px-5 py-3.5 text-left text-white text-sm font-semibold">구분</th>
+                <th class="border-b border-white/[0.08] px-5 py-3.5 text-left text-white text-sm font-semibold">수집 항목</th>
+                <th class="border-b border-white/[0.08] px-5 py-3.5 text-left text-white text-sm font-semibold">수집 방법</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="px-5 py-3.5">필수</td>
+                <td class="px-5 py-3.5">이름, 연락처(휴대전화번호), 피해금액</td>
+                <td class="px-5 py-3.5">웹사이트 상담 신청 양식</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 3조 -->
+      <section class="pt-4">
+        <h2 class="text-2xl font-bold text-white mb-6 pb-4 border-b border-crimson/20"><span class="keyword-highlight">제3조 (개인정보의 처리 목적)</span></h2>
+        <p class="mb-5">회사는 수집한 개인정보를 다음의 목적을 위해 처리합니다.</p>
+        <ul class="list-disc pl-6 space-y-3.5">
+          <li>법률 상담 신청 접수 및 본인 확인</li>
+          <li>상담 내용 검토 및 사건 수임 여부 판단</li>
+          <li>상담 결과 회신 및 후속 연락</li>
+          <li>피해 규모 파악을 통한 정확한 법률 자문 제공</li>
+          <li>집단소송 구성 및 사건 진행 안내</li>
+        </ul>
+      </section>
+
+      <!-- 4조 -->
+      <section class="pt-4">
+        <h2 class="text-2xl font-bold text-white mb-6 pb-4 border-b border-crimson/20"><span class="keyword-highlight">제4조 (개인정보의 처리 및 보유 기간)</span></h2>
+        <p class="mb-5">회사는 법령에 따른 개인정보 보유·이용 기간 또는 정보주체로부터 개인정보를 수집 시에 동의받은 개인정보 보유·이용 기간 내에서 개인정보를 처리·보유합니다.</p>
+        <ul class="list-disc pl-6 space-y-3.5">
+          <li><span class="text-white/75 font-semibold">상담 접수 기록:</span> 수집일로부터 3년 (상담 완료 후 파기)</li>
+          <li><span class="text-white/75 font-semibold">수임 사건 기록:</span> 사건 종료 후 5년 (변호사법 관련)</li>
+          <li><span class="text-white/75 font-semibold">소비자 불만 또는 분쟁 처리 기록:</span> 3년 (전자상거래법)</li>
+        </ul>
+      </section>
+
+      <!-- 5조 -->
+      <section class="pt-4">
+        <h2 class="text-2xl font-bold text-white mb-6 pb-4 border-b border-crimson/20"><span class="keyword-highlight">제5조 (개인정보의 제3자 제공)</span></h2>
+        <p class="mb-5">회사는 원칙적으로 정보주체의 개인정보를 제3자에게 제공하지 않습니다. 다만, 다음의 경우에는 예외로 합니다.</p>
+        <ul class="list-disc pl-6 space-y-3.5">
+          <li>정보주체가 사전에 동의한 경우</li>
+          <li>법률에 특별한 규정이 있거나 법령상 의무를 준수하기 위해 불가피한 경우</li>
+          <li>수사 목적으로 법령에 정해진 절차와 방법에 따라 수사기관의 요구가 있는 경우</li>
+          <li>사건 수임 후 법적 절차 진행을 위해 법원·수사기관 등에 제출이 필요한 경우</li>
+        </ul>
+      </section>
+
+      <!-- 6조 -->
+      <section class="pt-4">
+        <h2 class="text-2xl font-bold text-white mb-6 pb-4 border-b border-crimson/20"><span class="keyword-highlight">제6조 (개인정보 처리의 위탁)</span></h2>
+        <p class="mb-5">회사는 원활한 개인정보 업무처리를 위하여 다음과 같이 개인정보 처리업무를 위탁하고 있습니다.</p>
+        <div class="overflow-x-auto rounded-lg border border-white/[0.08]">
+          <table class="w-full border-collapse">
+            <thead>
+              <tr class="bg-white/[0.05]">
+                <th class="border-b border-white/[0.08] px-5 py-3.5 text-left text-white text-sm font-semibold">수탁업체</th>
+                <th class="border-b border-white/[0.08] px-5 py-3.5 text-left text-white text-sm font-semibold">위탁 업무</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="px-5 py-3.5">웹 호스팅 업체</td>
+                <td class="px-5 py-3.5">웹사이트 운영 및 데이터 보관</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 7조 -->
+      <section class="pt-4">
+        <h2 class="text-2xl font-bold text-white mb-6 pb-4 border-b border-crimson/20"><span class="keyword-highlight">제7조 (정보주체의 권리·의무 및 행사방법)</span></h2>
+        <p class="mb-5">정보주체는 회사에 대해 언제든지 다음 각 호의 개인정보 보호 관련 권리를 행사할 수 있습니다.</p>
+        <ul class="list-disc pl-6 space-y-3.5 mb-6">
+          <li>개인정보 열람 요구</li>
+          <li>오류 등이 있을 경우 정정 요구</li>
+          <li>삭제 요구</li>
+          <li>처리 정지 요구</li>
+        </ul>
+        <p>위 권리 행사는 서면, 전화, 이메일을 통하여 하실 수 있으며, 회사는 이에 대해 지체 없이 조치하겠습니다.</p>
+      </section>
+
+      <!-- 8조 -->
+      <section class="pt-4">
+        <h2 class="text-2xl font-bold text-white mb-6 pb-4 border-b border-crimson/20"><span class="keyword-highlight">제8조 (개인정보의 파기 절차 및 방법)</span></h2>
+        <p class="mb-5">회사는 개인정보 보유 기간의 경과, 처리 목적 달성 등 개인정보가 불필요하게 되었을 때에는 지체 없이 해당 개인정보를 파기합니다.</p>
+        <ul class="list-disc pl-6 space-y-3.5">
+          <li><span class="text-white/75 font-semibold">전자적 파일:</span> 복구 및 재생이 불가능한 방법으로 영구 삭제</li>
+          <li><span class="text-white/75 font-semibold">종이 문서:</span> 분쇄기로 분쇄하거나 소각하여 파기</li>
+        </ul>
+      </section>
+
+      <!-- 9조 -->
+      <section class="pt-4">
+        <h2 class="text-2xl font-bold text-white mb-6 pb-4 border-b border-crimson/20"><span class="keyword-highlight">제9조 (개인정보의 안전성 확보 조치)</span></h2>
+        <p class="mb-5">회사는 개인정보의 안전성 확보를 위해 다음과 같은 조치를 취하고 있습니다.</p>
+        <ul class="list-disc pl-6 space-y-3.5">
+          <li><span class="text-white/75 font-semibold">관리적 조치:</span> 내부관리계획 수립·시행, 개인정보 취급 직원 최소화 및 교육</li>
+          <li><span class="text-white/75 font-semibold">기술적 조치:</span> 개인정보 처리 시스템의 접근 권한 관리, 고유식별정보 등의 암호화, 보안 프로그램 설치 및 갱신</li>
+          <li><span class="text-white/75 font-semibold">물리적 조치:</span> 개인정보가 포함된 서류, 보조저장매체 등의 잠금장치가 있는 안전한 장소에 보관</li>
+        </ul>
+      </section>
+
+      <!-- 10조 -->
+      <section class="pt-4">
+        <h2 class="text-2xl font-bold text-white mb-6 pb-4 border-b border-crimson/20"><span class="keyword-highlight">제10조 (개인정보 보호책임자)</span></h2>
+        <p class="mb-5">회사는 개인정보 처리에 관한 업무를 총괄해서 책임지고, 개인정보 처리와 관련한 정보주체의 불만 처리 및 피해 구제 등을 위하여 아래와 같이 개인정보 보호책임자를 지정하고 있습니다.</p>
+        <div class="bg-white/[0.03] border border-white/[0.08] rounded-lg px-6 py-5 space-y-2">
+          <p><span class="text-white/75 font-semibold">성명:</span> 강민성</p>
+          <p><span class="text-white/75 font-semibold">직책:</span> 대표변호사 / 개인정보 보호책임자</p>
+        </div>
+      </section>
+
+      <!-- 11조 -->
+      <section class="pt-4">
+        <h2 class="text-2xl font-bold text-white mb-6 pb-4 border-b border-crimson/20"><span class="keyword-highlight">제11조 (권익침해 구제방법)</span></h2>
+        <p class="mb-5">정보주체는 개인정보침해로 인한 구제를 받기 위하여 아래 기관에 분쟁해결이나 상담 등을 신청할 수 있습니다.</p>
+        <ul class="list-disc pl-6 space-y-3.5">
+          <li>개인정보보호위원회 (privacy.go.kr) — 1833-6972</li>
+          <li>개인정보 침해신고센터 (KISA) — 118</li>
+          <li>대검찰청 사이버수사과 — 1301</li>
+          <li>경찰청 사이버수사국 — 182</li>
+        </ul>
+      </section>
+
+      <!-- 12조 -->
+      <section class="pt-4">
+        <h2 class="text-2xl font-bold text-white mb-6 pb-4 border-b border-crimson/20"><span class="keyword-highlight">제12조 (개인정보 처리방침의 변경)</span></h2>
+        <p>이 개인정보 처리방침은 2026년 4월 1일부터 적용됩니다. 변경 사항이 있을 경우 웹사이트를 통해 공지하겠습니다.</p>
+      </section>
+
+    </div>
+  </div>
+
+  <Footer slot="footer" siteName={siteName} />
+</BaseLayout>
+
+<style>
+  .keyword-highlight {
+    position: relative;
+    color: #fff;
+    padding: 0 0.15em;
+    text-shadow: 0 0 10px rgba(255,42,68,0.5), 0 0 30px rgba(255,42,68,0.2);
+    animation: keywordGlow 2.5s ease-in-out infinite;
+  }
+  .keyword-highlight::before {
+    content: '';
+    position: absolute;
+    left: -2px;
+    right: -2px;
+    bottom: 0.05em;
+    height: 40%;
+    background: rgba(255,42,68,0.25);
+    border-radius: 2px;
+    z-index: -1;
+    animation: highlightExpand 1s ease-out 0.3s both;
+  }
+  @keyframes highlightExpand {
+    from { transform: scaleX(0); transform-origin: left; }
+    to { transform: scaleX(1); transform-origin: left; }
+  }
+  @keyframes keywordGlow {
+    0%, 100% { text-shadow: 0 0 10px rgba(255,42,68,0.5), 0 0 30px rgba(255,42,68,0.2); }
+    50% { text-shadow: 0 0 15px rgba(255,42,68,0.7), 0 0 40px rgba(255,42,68,0.35), 0 0 60px rgba(255,42,68,0.15); }
+  }
+</style>

@@ -1,0 +1,52 @@
+---
+interface Props {
+  siteName: string;
+}
+const { siteName } = Astro.props;
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 bg-abyss/95 backdrop-blur-md border-b border-white/[0.06]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <a href="/" class="flex items-center gap-2.5 group">
+        <img src="/header-logo.png" alt={siteName} width="32" height="32" class="w-8 h-8 object-contain" />
+        <span class="text-white font-bold text-lg tracking-tight group-hover:text-crimson transition-colors">{siteName}</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-6" aria-label="주 메뉴">
+        <a href="/" class="text-steel hover:text-white transition-colors text-sm font-medium">진행 사건</a>
+        <a href="#about" class="text-steel hover:text-white transition-colors text-sm font-medium">센터 소개</a>
+        <a href="#" class="bg-crimson text-white px-4 py-2 rounded text-sm font-bold hover:bg-crimson/85 transition-all hover:shadow-[0_0_20px_rgba(255,42,68,0.3)]">
+          무료 상담
+        </a>
+      </nav>
+      <button
+        class="md:hidden text-steel hover:text-white p-2 transition-colors"
+        aria-label="메뉴 열기"
+        aria-expanded="false"
+        id="menu-toggle"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+  <!-- Mobile menu -->
+  <div class="md:hidden hidden" id="mobile-menu">
+    <div class="px-4 py-4 bg-abyss border-t border-white/[0.06] space-y-3">
+      <a href="/" class="block text-steel hover:text-white text-sm font-medium transition-colors">진행 사건</a>
+      <a href="#about" class="block text-steel hover:text-white text-sm font-medium transition-colors">센터 소개</a>
+      <a href="#" class="block bg-crimson text-white px-4 py-2.5 rounded text-sm font-bold text-center hover:bg-crimson/85 transition-colors">무료 상담</a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  toggle?.addEventListener('click', () => {
+    const expanded = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!expanded));
+    menu?.classList.toggle('hidden');
+  });
+</script>

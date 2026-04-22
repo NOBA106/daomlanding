@@ -1,0 +1,113 @@
+---
+import '@/styles/global.css';
+
+interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  ogImage?: string;
+  type?: 'website' | 'article';
+  schema?: object | object[];
+}
+
+const {
+  title,
+  description,
+  canonical,
+  ogImage = '/day-lawoffice.png',
+  type = 'website',
+  schema,
+} = Astro.props;
+
+const siteUrl = Astro.site?.toString().replace(/\/$/, '') ?? '';
+const canonicalUrl = canonical ?? new URL(Astro.url.pathname, siteUrl).toString();
+---
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="/favicon.png" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href={canonicalUrl} />
+
+  <!-- Naver / Yeti -->
+  <meta name="NaverBot" content="All" />
+  <meta name="Yeti" content="All" />
+  <!-- RSS autodiscovery -->
+  <link rel="alternate" type="application/rss+xml" title="금융범죄 환수센터" href={`${siteUrl}/rss.xml`} />
+
+  <!-- hreflang -->
+  <link rel="alternate" hreflang="ko" href={canonicalUrl} />
+  <link rel="alternate" hreflang="x-default" href={canonicalUrl} />
+
+  <!-- LCP image preload -->
+  <link rel="preload" as="image" href="/header-logo.png" fetchpriority="high" />
+
+  <!-- Naver 대표이미지 & 블로그/카페 공유 최적화 -->
+  <meta property="og:site_name" content="금융범죄 환수센터 | 데이 법률사무소" />
+  <meta property="og:image:width" content="800" />
+  <meta property="og:image:height" content="800" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content={type} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonicalUrl} />
+  <meta property="og:image" content={`${siteUrl}${ogImage}`} />
+  <meta property="og:locale" content="ko_KR" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={`${siteUrl}${ogImage}`} />
+
+  <!-- Naver 스마트에디터 / 인용 최적화 -->
+  <meta name="author" content="데이 법률사무소" />
+  <meta name="content-language" content="ko" />
+  <meta name="date" content={new Date().toISOString().slice(0, 10)} />
+  <meta name="subject" content="투자사기 피해 구제" />
+
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+
+  <!-- Font (non-blocking) -->
+  <link
+    rel="preload"
+    as="style"
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
+    onload="this.rel='stylesheet'"
+  />
+  <noscript>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
+    />
+  </noscript>
+
+  <!-- Schema.org JSON-LD -->
+  {schema && (
+    Array.isArray(schema)
+      ? schema.map((s) => (
+          <script type="application/ld+json" set:html={JSON.stringify(s)} />
+        ))
+      : <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  )}
+
+  <slot name="head" />
+</head>
+<body class="bg-abyss text-white font-sans antialiased">
+  <a href="#content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-crimson focus:text-white focus:px-4 focus:py-2 focus:rounded">
+    본문 바로가기
+  </a>
+  <slot name="header" />
+  <main id="content">
+    <slot />
+  </main>
+  <slot name="footer" />
+</body>
+</html>

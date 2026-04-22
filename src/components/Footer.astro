@@ -1,0 +1,32 @@
+---
+interface Props {
+  siteName: string;
+}
+const { siteName } = Astro.props;
+---
+
+<footer class="bg-[#0A0C0F] border-t border-white/[0.06] pb-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid md:grid-cols-2 gap-8">
+      <div class="flex items-start gap-5">
+        <div class="w-32 h-32 bg-white rounded-lg flex items-center justify-center flex-shrink-0">
+          <img src="/logo.png" alt={siteName} width="128" height="128" loading="lazy" class="w-28 h-28 object-contain" />
+        </div>
+        <div>
+          <h2 class="text-white font-bold text-lg mb-3">{siteName}</h2>
+          <address class="not-italic text-sm leading-relaxed space-y-1.5 text-steel">
+            <p>서울특별시 서초구 사임당로8길 16, 4층</p>
+            <p>광고책임변호사 : 강민성</p>
+            <p>사업자등록번호 : 579-47-01193</p>
+          </address>
+        </div>
+      </div>
+      <div class="md:text-right flex flex-col justify-between">
+        <div class="flex md:justify-end gap-4 mb-4">
+          <a href="/privacy" class="text-sm text-steel hover:text-crimson transition-colors">개인정보처리방침</a>
+        </div>
+        <p class="text-xs text-white/20">&copy; {new Date().getFullYear()} 데이 법률사무소. All Rights Reserved.</p>
+      </div>
+    </div>
+  </div>
+</footer>

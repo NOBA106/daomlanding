@@ -1,0 +1,65 @@
+---
+interface Props {
+  currentPage: number;
+  totalPages: number;
+  baseUrl?: string;
+}
+
+const { currentPage, totalPages, baseUrl = '' } = Astro.props;
+
+const pages: (number | '...')[] = [];
+for (let i = 1; i <= totalPages; i++) {
+  if (i === 1 || i === totalPages || (i >= currentPage - 2 && i <= currentPage + 2)) {
+    pages.push(i);
+  } else if (pages[pages.length - 1] !== '...') {
+    pages.push('...');
+  }
+}
+
+function pageUrl(page: number): string {
+  return page === 1 ? baseUrl || '/' : `${baseUrl}/page/${page}`;
+}
+---
+
+<nav aria-label="페이지 네비게이션" class="flex justify-center items-center gap-1.5 py-8 border-t border-white/[0.06] mt-4">
+  {currentPage > 1 && (
+    <a href={pageUrl(1)} class="px-3 py-2 rounded text-sm text-steel hover:text-crimson transition-colors" title="첫 페이지">
+      «
+    </a>
+  )}
+  {currentPage > 1 && (
+    <a href={pageUrl(currentPage - 1)} class="px-3 py-2 rounded text-sm text-steel hover:text-crimson transition-colors" rel="prev">
+      ‹ 이전
+    </a>
+  )}
+
+  {pages.map((page) =>
+    page === '...' ? (
+      <span class="px-2 text-white/20">…</span>
+    ) : (
+      <a
+        href={pageUrl(page)}
+        class:list={[
+          'w-10 h-10 flex items-center justify-center rounded text-sm font-medium transition-all',
+          page === currentPage
+            ? 'bg-crimson text-white box-glow-crimson'
+            : 'text-steel hover:text-white hover:bg-white/[0.06]',
+        ]}
+        aria-current={page === currentPage ? 'page' : undefined}
+      >
+        {page}
+      </a>
+    )
+  )}
+
+  {currentPage < totalPages && (
+    <a href={pageUrl(currentPage + 1)} class="px-3 py-2 rounded text-sm text-steel hover:text-crimson transition-colors" rel="next">
+      다음 ›
+    </a>
+  )}
+  {currentPage < totalPages && (
+    <a href={pageUrl(totalPages)} class="px-3 py-2 rounded text-sm text-steel hover:text-crimson transition-colors" title="마지막 페이지">
+      »
+    </a>
+  )}
+</nav>

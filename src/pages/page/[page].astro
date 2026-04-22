@@ -1,0 +1,453 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import Footer from '@/components/Footer.astro';
+import Pagination from '@/components/Pagination.astro';
+import { cases, getCasesByPage, getTotalPages, PER_PAGE } from '@/data/cases';
+
+const siteName = '금융범죄 환수센터';
+const totalCases = cases.length;
+const totalPages = getTotalPages();
+
+export function getStaticPaths() {
+  const totalPages = Math.ceil(cases.length / PER_PAGE);
+  return Array.from({ length: totalPages - 1 }, (_, i) => ({
+    params: { page: String(i + 2) },
+  }));
+}
+
+const currentPage = Number(Astro.params.page);
+const pageCases = getCasesByPage(currentPage);
+
+const today = new Date().toISOString().slice(0, 10);
+
+const statusStyle: Record<string, string> = {
+  '사건진행중': 'bg-crimson/10 text-crimson border border-crimson/20',
+};
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${Astro.site}#website`,
+    "name": siteName,
+    "url": Astro.site?.toString(),
+    "inLanguage": "ko-KR",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": `${Astro.site}?q={search_term_string}`,
+      "query-input": "required name=search_term_string",
+    },
+    "publisher": { "@id": `${Astro.site}#organization` },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": `${siteName} 진행 사건 목록`,
+    "url": Astro.site?.toString(),
+    "numberOfItems": 50,
+    "itemListElement": pageCases.slice(0, 50).map((c, i) => ({
+      "@type": "ListItem",
+      "position": i + 1,
+      "name": c.title,
+      "url": `${Astro.site}cases/${c.slug}/`,
+    })),
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "LegalService",
+    "@id": `${Astro.site}#organization`,
+    "name": "데이 법률사무소",
+    "alternateName": siteName,
+    "description": "데이 법률사무소는 투자사기, 금융범죄 피해 구제 전문 법률사무소입니다. 계좌 동결, 자금 추적, 집단소송을 통해 피해금 환수를 지원합니다.",
+    "url": Astro.site?.toString(),
+    "telephone": "010-2555-2179",
+    "priceRange": "무료 상담",
+    "image": { "@type": "ImageObject", "url": `${Astro.site}day-lawoffice.png`, "width": 800, "height": 800 },
+    "logo": { "@type": "ImageObject", "url": `${Astro.site}day-lawoffice.png`, "width": 800, "height": 800 },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+      "opens": "00:00",
+      "closes": "24:00",
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "사임당로8길 16, 4층",
+      "addressLocality": "서초구",
+      "addressRegion": "서울특별시",
+      "postalCode": "06614",
+      "addressCountry": "KR",
+    },
+    "geo": { "@type": "GeoCoordinates", "latitude": "37.4904", "longitude": "127.0133" },
+    "serviceType": ["투자사기 집단소송", "피해금 환수", "자산 추적", "계좌 동결", "민사소송", "형사고소"],
+    "areaServed": [
+      { "@type": "City", "name": "서울특별시" },
+      { "@type": "AdministrativeArea", "name": "경기도" },
+      { "@type": "City", "name": "인천광역시" },
+      { "@type": "City", "name": "대전광역시" },
+      { "@type": "City", "name": "부산광역시" },
+      { "@type": "City", "name": "대구광역시" },
+      { "@type": "City", "name": "광주광역시" },
+    ],
+    "knowsAbout": ["투자사기", "금융범죄", "디지털 포렌식", "집단소송", "피해금 환수"],
+  },
+];
+---
+
+<BaseLayout
+  title={`투자사기 사건 목록 · 집단소송 진행 현황 | ${siteName}`}
+  description={`${siteName}에서 현재 집단 대응 중인 투자사기 ${totalCases}건의 사건 목록입니다. 피해 업체를 검색하고 집단소송에 합류하세요. 24시간 무료 상담.`}
+  schema={schema}
+>
+  <div class="min-h-screen flex flex-col noise-overlay">
+
+    <!-- Header -->
+    <header class="relative border-b border-white/[0.06] bg-gradient-to-r from-transparent via-white/[0.02] to-transparent">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 py-5 flex items-center justify-between">
+        <a href="/" class="flex items-center gap-3 group">
+          <img src="/header-logo.png" alt={siteName} width="36" height="36" class="w-9 h-9 object-contain" />
+          <span class="font-bold text-white text-lg tracking-tight group-hover:text-crimson transition-colors">{siteName}</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="relative border-b border-white/[0.06] overflow-hidden">
+      <!-- Layered atmospheric background -->
+      <div class="absolute inset-0 bg-gradient-to-b from-[#13161D] via-abyss to-abyss"></div>
+      <!-- Grid texture -->
+      <div class="absolute inset-0 opacity-[0.04]" style="background-image: linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px); background-size: 48px 48px;"></div>
+      <!-- Crimson orb — top right -->
+      <div class="absolute -top-20 right-[10%] w-[600px] h-[400px] bg-crimson/[0.05] rounded-full blur-[150px]"></div>
+      <!-- Deep blue orb — left -->
+      <div class="absolute top-10 -left-20 w-[400px] h-[300px] bg-[#1a2040]/50 rounded-full blur-[120px]"></div>
+      <!-- Vignette edges -->
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_40%,#0F1115_100%)]"></div>
+
+      <div class="relative max-w-6xl mx-auto px-4 sm:px-6 py-10 md:py-14">
+        <div class="flex items-center justify-center gap-2 mb-4">
+          <span class="inline-block w-2 h-2 rounded-full bg-crimson neon-dot"></span>
+          <span class="text-xs font-bold uppercase tracking-[0.2em] text-crimson neon-text">LIVE TRACKING</span>
+        </div>
+        <h1 class="text-2xl md:text-[2rem] font-bold text-white mb-2 min-h-[2.4em] text-center">
+          <span id="typewriter">빼앗긴 자금, 끝까지 추적해 환수합니다.</span><span id="cursor" class="inline-block w-[2px] h-[1.3em] bg-crimson align-middle ml-[2px]"></span>
+        </h1>
+        <p class="text-sm text-steel leading-relaxed text-center">현재 <span class="text-white font-bold pulse-text">{totalCases.toLocaleString()}건</span>의 금융범죄 사건이 <span class="text-crimson font-bold neon-text">환수센터</span>에 접수되었습니다.<br/>내가 투자중인 업체가 <span class="text-white font-bold pulse-text">사기업체</span>인지 <span class="text-steel">지금 바로 확인하세요.</span></p>
+      </div>
+    </div>
+
+    <!-- Search -->
+    <div class="relative border-b border-white/[0.06] bg-gradient-to-b from-[#12151A] to-[#0F1115]">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4">
+        <div class="flex gap-2">
+          <input
+            type="text"
+            id="search-input"
+            placeholder="🔍 사기 업체를 검색하고 남들보다 빠르게 합류하세요(EX - 큐필름, AXIT, savexa)"
+            class="flex-1 px-4 py-3 bg-white/[0.04] border border-steel rounded text-sm text-white placeholder-white/40 focus:outline-none focus:border-crimson/50 focus:bg-white/[0.06] transition-all"
+          />
+          <button
+            type="button"
+            id="search-btn"
+            class="px-6 py-3 bg-crimson text-white text-sm font-bold rounded hover:bg-crimson/85 transition-all hover:shadow-[0_0_20px_rgba(255,42,68,0.3)] whitespace-nowrap"
+          >
+            검색
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 검색 결과 없음 -->
+    <div id="no-results" class="hidden">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 py-16 text-center">
+        <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-white/[0.04] border border-white/[0.08] mb-6">
+          <svg class="w-8 h-8 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+        </div>
+        <h3 class="text-xl font-bold text-white mb-2">'<span id="no-results-keyword" class="text-crimson"></span>' 관련 접수된 사건이 없습니다</h3>
+        <p class="text-sm text-white/40 mb-8 leading-relaxed">아직 접수되지 않은 사건이거나 다른 이름으로 등록되어 있을 수 있습니다.<br/>아래 버튼을 통해 직접 문의해주시면 확인 후 안내드리겠습니다.</p>
+        <a
+          href="tel:010-2555-2179"
+          class="inline-flex items-center gap-2 px-8 py-4 bg-crimson text-white text-base font-bold rounded-lg hover:shadow-[0_0_30px_rgba(255,42,68,0.4)] transition-all"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+          전화 문의하기
+        </a>
+      </div>
+    </div>
+
+    <!-- Table -->
+    <div class="relative flex-1">
+      <!-- Subtle side gradients for depth -->
+      <div class="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#0A0C0F]/50 to-transparent pointer-events-none"></div>
+      <div class="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#0A0C0F]/50 to-transparent pointer-events-none"></div>
+      <div class="max-w-6xl mx-auto px-4 sm:px-6">
+        <!-- Desktop Table -->
+        <div class="hidden sm:block">
+          <table class="w-full">
+            <thead>
+              <tr class="border-b border-white/[0.08] text-left">
+                <th class="py-3.5 pl-4 pr-4 text-xs font-bold text-steel tracking-[0.15em] w-20">No.</th>
+                <th class="py-3.5 pr-4 text-xs font-bold text-steel uppercase tracking-[0.15em]">사기업체명</th>
+                <th class="py-3.5 pr-4 text-xs font-bold text-steel uppercase tracking-[0.15em] w-28 text-center">상태</th>
+                <th class="py-3.5 pr-4 text-xs font-bold text-steel uppercase tracking-[0.15em] w-28 text-center">등록일</th>
+                <th class="py-3.5 pr-4 text-xs font-bold text-steel uppercase tracking-[0.15em] w-24 text-center">조회수</th>
+              </tr>
+            </thead>
+            <tbody>
+              {pageCases.map((c, idx) => {
+                const isToday = c.date === today;
+                return (
+                <tr class:list={[
+                      'group border-b transition-all cursor-pointer',
+                      isToday
+                        ? 'today-row bg-crimson/[0.04] border-b-crimson/15 border-l-2 border-l-crimson'
+                        : 'border-b-white/[0.04] hover:bg-white/[0.02] hover:border-l-2 hover:border-l-crimson',
+                    ]}
+                    style={`animation: fadeIn 0.3s ease ${idx * 0.02}s both`}>
+                  <td class="py-3.5 pl-4 pr-4 text-sm tabular-nums font-mono">
+                    {isToday ? <span class="text-crimson">{String(totalCases - idx).padStart(2, '0')}</span> : <span class="text-white/25">{String(totalCases - idx).padStart(2, '0')}</span>}
+                  </td>
+                  <td class="py-3.5 pr-4">
+                    <a
+                      href={`/cases/${c.slug}`}
+                      class:list={[
+                        'text-sm font-medium group-hover:text-crimson transition-colors',
+                        isToday ? 'text-white' : 'text-white/80',
+                      ]}
+                    >
+                      {c.title}
+                      {isToday && <span class="ml-2 inline-flex px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider rounded bg-crimson text-white today-badge align-middle">TODAY</span>}
+                    </a>
+                  </td>
+                  <td class="py-3.5 pr-4 text-center">
+                    <span class={`inline-flex px-3 py-1 text-[11px] font-bold tracking-wider rounded neon-badge ${statusStyle[c.status] ?? 'bg-white/5 text-steel'}`}>
+                      {c.status}
+                    </span>
+                  </td>
+                  <td class:list={['py-3.5 pr-4 text-sm text-center tabular-nums font-mono', isToday ? 'text-white/50' : 'text-white/25']}>
+                    <time datetime={c.date}>{c.date}</time>
+                  </td>
+                  <td class="py-3.5 pr-4 text-sm text-white/25 text-center tabular-nums font-mono">
+                    {(Math.floor(Math.abs(Math.sin(c.id * 127.1) * 8000) + 500)).toLocaleString()}
+                  </td>
+                </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Mobile List -->
+        <div class="sm:hidden">
+          {pageCases.map((c, idx) => {
+            const isToday = c.date === today;
+            return (
+            <a href={`/cases/${c.slug}`}
+               class:list={[
+                 'flex items-center justify-between py-4 gap-3 border-b group',
+                 isToday ? 'today-row bg-crimson/[0.04] border-b-crimson/15 border-l-2 border-l-crimson pl-3' : 'border-b-white/[0.04]',
+               ]}
+               style={`animation: fadeIn 0.3s ease ${idx * 0.02}s both`}>
+              <div class="min-w-0 flex-1">
+                <p class:list={['text-sm font-medium truncate group-hover:text-crimson transition-colors', isToday ? 'text-white' : 'text-white/80']}>
+                  {c.title}
+                  {isToday && <span class="ml-2 inline-flex px-1.5 py-0.5 text-[9px] font-bold uppercase tracking-wider rounded bg-crimson text-white today-badge align-middle">TODAY</span>}
+                </p>
+                <p class="text-xs text-white/20 mt-1 font-mono">{c.date}</p>
+              </div>
+              <span class={`flex-shrink-0 px-3 py-1 text-[11px] font-bold tracking-wider rounded neon-badge ${statusStyle[c.status] ?? 'bg-white/5 text-steel'}`}>
+                {c.status}
+              </span>
+            </a>
+            );
+          })}
+        </div>
+
+        <!-- Pagination -->
+        <Pagination currentPage={currentPage} totalPages={totalPages} />
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <Footer siteName={siteName} />
+
+  </div>
+</BaseLayout>
+
+<style>
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+  #cursor {
+    animation: blink 0.7s step-end infinite;
+  }
+  @keyframes neonPulse {
+    0%, 100% {
+      box-shadow: 0 0 4px rgba(255, 42, 68, 0.3), 0 0 8px rgba(255, 42, 68, 0.15), inset 0 0 4px rgba(255, 42, 68, 0.05);
+      text-shadow: 0 0 4px rgba(255, 42, 68, 0.4);
+    }
+    50% {
+      box-shadow: 0 0 8px rgba(255, 42, 68, 0.5), 0 0 18px rgba(255, 42, 68, 0.25), inset 0 0 8px rgba(255, 42, 68, 0.1);
+      text-shadow: 0 0 8px rgba(255, 42, 68, 0.6);
+    }
+  }
+  .neon-badge {
+    animation: neonPulse 2s ease-in-out infinite;
+  }
+  @keyframes neonTextPulse {
+    0%, 100% {
+      text-shadow: 0 0 4px rgba(255, 42, 68, 0.5), 0 0 10px rgba(255, 42, 68, 0.3);
+    }
+    50% {
+      text-shadow: 0 0 8px rgba(255, 42, 68, 0.8), 0 0 20px rgba(255, 42, 68, 0.5), 0 0 35px rgba(255, 42, 68, 0.2);
+    }
+  }
+  .neon-text {
+    animation: neonTextPulse 2s ease-in-out infinite;
+  }
+  @keyframes neonDotPulse {
+    0%, 100% {
+      box-shadow: 0 0 4px rgba(255, 42, 68, 0.5), 0 0 10px rgba(255, 42, 68, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 8px rgba(255, 42, 68, 0.8), 0 0 20px rgba(255, 42, 68, 0.5), 0 0 35px rgba(255, 42, 68, 0.2);
+    }
+  }
+  .neon-dot {
+    animation: neonDotPulse 2s ease-in-out infinite;
+  }
+  @keyframes pulseText {
+    0%, 100% { opacity: 1; transform: scale(1); text-shadow: 0 0 0 transparent; }
+    50% { opacity: 0.3; transform: scale(1.05); text-shadow: 0 0 12px rgba(255, 255, 255, 0.4); }
+  }
+  .pulse-text {
+    display: inline-block;
+    animation: pulseText 1.8s ease-in-out infinite;
+  }
+  @keyframes todayGlow {
+    0%, 100% {
+      box-shadow: 0 0 4px rgba(255, 42, 68, 0.4), 0 0 8px rgba(255, 42, 68, 0.15);
+    }
+    50% {
+      box-shadow: 0 0 6px rgba(255, 42, 68, 0.6), 0 0 14px rgba(255, 42, 68, 0.25);
+    }
+  }
+  .today-badge {
+    animation: todayGlow 1.8s ease-in-out infinite;
+  }
+  .today-row {
+    background-image: linear-gradient(90deg, rgba(255, 42, 68, 0.06) 0%, transparent 40%);
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+</style>
+
+<script>
+  const el = document.getElementById('typewriter');
+  const fullText = '빼앗긴 자금, 끝까지 추적해 환수합니다.';
+  const highlightStart = fullText.indexOf('끝까지 추적해 환수합니다.');
+  const typeSpeed = 80;
+  const deleteSpeed = 40;
+  const pauseAfterType = 2000;
+  const pauseAfterDelete = 500;
+
+  function render(len: number) {
+    if (!el) return;
+    const visible = fullText.slice(0, len);
+    if (len <= highlightStart) {
+      el.innerHTML = visible;
+    } else {
+      const white = fullText.slice(0, highlightStart);
+      const crimson = visible.slice(highlightStart);
+      el.innerHTML = white + '<span style="color:#FF2A44">' + crimson + '</span>';
+    }
+  }
+
+  function type() {
+    let i = 0;
+    const typing = setInterval(() => {
+      i++;
+      render(i);
+      if (i >= fullText.length) {
+        clearInterval(typing);
+        setTimeout(erase, pauseAfterType);
+      }
+    }, typeSpeed);
+  }
+
+  function erase() {
+    let i = fullText.length;
+    const erasing = setInterval(() => {
+      i--;
+      render(i);
+      if (i <= 0) {
+        clearInterval(erasing);
+        setTimeout(type, pauseAfterDelete);
+      }
+    }, deleteSpeed);
+  }
+
+  if (el) el.textContent = '';
+  type();
+
+  // Client-side search
+  const searchInput = document.getElementById('search-input') as HTMLInputElement;
+  const searchBtn = document.getElementById('search-btn')!;
+  const noResults = document.getElementById('no-results')!;
+  const noResultsKeyword = document.getElementById('no-results-keyword')!;
+  const tableDesktop = document.querySelector('.hidden.sm\\:block') as HTMLElement;
+  const tableMobile = document.querySelector('.sm\\:hidden') as HTMLElement;
+  const pagination = document.querySelector('[class*="pagination"]')?.parentElement;
+
+  // All rows
+  const desktopRows = Array.from(tableDesktop?.querySelectorAll('tbody tr') || []) as HTMLElement[];
+  const mobileRows = Array.from(tableMobile?.children || []) as HTMLElement[];
+
+  function doSearch() {
+    const q = searchInput.value.trim().toLowerCase();
+
+    if (!q) {
+      // Reset: show all
+      desktopRows.forEach(r => r.style.display = '');
+      mobileRows.forEach(r => (r as HTMLElement).style.display = '');
+      noResults.classList.add('hidden');
+      if (tableDesktop) tableDesktop.style.display = '';
+      if (tableMobile) tableMobile.style.display = '';
+      return;
+    }
+
+    let found = 0;
+
+    desktopRows.forEach(r => {
+      const text = r.textContent?.toLowerCase() || '';
+      const match = text.includes(q);
+      r.style.display = match ? '' : 'none';
+      if (match) found++;
+    });
+
+    mobileRows.forEach(r => {
+      const text = r.textContent?.toLowerCase() || '';
+      const match = text.includes(q);
+      (r as HTMLElement).style.display = match ? '' : 'none';
+    });
+
+    if (found === 0) {
+      noResults.classList.remove('hidden');
+      if (tableDesktop) tableDesktop.style.display = 'none';
+      if (tableMobile) tableMobile.style.display = 'none';
+      noResultsKeyword.textContent = searchInput.value.trim();
+    } else {
+      noResults.classList.add('hidden');
+      if (tableDesktop) tableDesktop.style.display = '';
+      if (tableMobile) tableMobile.style.display = '';
+    }
+  }
+
+  searchBtn.addEventListener('click', doSearch);
+  searchInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') doSearch();
+  });
+</script>
