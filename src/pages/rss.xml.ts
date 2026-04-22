@@ -3,7 +3,7 @@ import { cases } from '@/data/cases';
 
 export const GET: APIRoute = async ({ site }) => {
   const siteUrl = site?.toString() || 'https://day-fintech.co.kr/';
-  const siteName = '금융범죄 환수센터';
+  const siteName = 'DAY 금융사기 피해회복 솔루션';
   const now = new Date().toUTCString();
 
   const items = cases.slice(0, 100).map((c) => `    <item>

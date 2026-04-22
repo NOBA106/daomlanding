@@ -15,7 +15,7 @@ interface Props {
 }
 
 const { caseData } = Astro.props;
-const siteName = '금융범죄 환수센터';
+const siteName = 'DAY 금융사기 피해회복 솔루션';
 const keyword = caseData.title.replace(/ 사칭.*/, '');
 const pageUrl = `${Astro.site}cases/${caseData.slug}/`;
 const seoDescription = `${keyword} 사칭 사기 피해를 입으셨나요? 데이 법률사무소가 계좌 동결, 자금 추적, 집단소송을 통해 피해금을 환수합니다. 24시간 무료 상담 010-2555-2179.`;
@@ -162,49 +162,50 @@ const schema = [
 
     <!-- Center content -->
     <div class="relative flex-1 flex items-center justify-center">
-      <div class="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-20 text-center">
+      <div class="w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 md:py-20 text-center">
         <!-- Logo -->
         <div class="mb-8 md:mb-14 flex justify-center">
-          <img src="/day-lawoffice.png" alt={siteName} width="800" height="800" class="h-[70px] md:h-[140px] object-contain opacity-90" />
+          <img src="/day-lawoffice.png" alt={siteName} width="800" height="800" class="h-[55px] sm:h-[70px] md:h-[140px] object-contain opacity-90" />
         </div>
 
         <!-- Headline 1행: 키워드 + 금융사기 피해(사칭) -->
-        <h1 class="leading-[1.3] mb-8">
-          <span class="text-3xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-black section2-gold-neon">{caseData.title.replace(/ 사칭.*/, '')}</span>
-          <span class="text-2xl sm:text-3xl md:text-[2.7rem] lg:text-[2.9rem] font-light text-white/70 ml-2">금융사기 피해(사칭)</span>
+        <h1 class="leading-[1.3] mb-6 md:mb-8">
+          <span class="text-2xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-black section2-gold-neon">{caseData.title.replace(/ 사칭.*/, '')}</span>
+          <br class="sm:hidden" />
+          <span class="text-xl sm:text-3xl md:text-[2.7rem] lg:text-[2.9rem] font-light text-white/70 sm:ml-2">금융사기 피해(사칭)</span>
         </h1>
 
         <!-- 2~3행 -->
-        <div class="mt-10 mb-10">
-          <p class="text-xs sm:text-xs md:text-sm text-white/50 leading-relaxed mb-1">금융사기 는 당신이 돈을 잃었을 때가 아니라,</p>
-          <p class="text-xs sm:text-xs md:text-sm text-white/50 leading-relaxed">당신이 추적을 '<span class="text-white font-bold">포기</span>'하는 순간 비로소 완성됩니다.</p>
+        <div class="mt-6 md:mt-10 mb-6 md:mb-10">
+          <p class="text-[11px] sm:text-xs md:text-sm text-white/50 leading-relaxed mb-1">금융사기 는 당신이 돈을 잃었을 때가 아니라,</p>
+          <p class="text-[11px] sm:text-xs md:text-sm text-white/50 leading-relaxed">당신이 추적을 '<span class="text-white font-bold">포기</span>'하는 순간 비로소 완성됩니다.</p>
         </div>
 
         <!-- 4행 -->
-        <p class="text-lg sm:text-xl md:text-2xl text-white mb-14">사기꾼들에게 '<span class="font-black section2-gold-neon">자금세탁</span>' 시간을 주지마세요.</p>
+        <p class="text-base sm:text-xl md:text-2xl text-white mb-8 md:mb-14">사기꾼들에게 '<span class="font-black section2-gold-neon">자금세탁</span>' 시간을 주지마세요.</p>
 
         <!-- Stats line with borders -->
         {caseData.victims && (
-          <div class="mb-10">
-            <div class="inline-flex items-center gap-3 px-8 py-4 border-t border-b border-white/15">
-              <span class="text-white text-sm">실시간 피해접수</span>
-              <span class="text-2xl md:text-3xl font-black section2-gold-neon">{caseData.victims.toLocaleString()}건</span>
-              <span class="text-white text-sm">({caseData.date} 기준)</span>
+          <div class="mb-6 md:mb-10">
+            <div class="inline-flex items-center gap-2 sm:gap-3 px-4 sm:px-8 py-3 sm:py-4 border-t border-b border-white/15">
+              <span class="text-white text-xs sm:text-sm">실시간 피해접수</span>
+              <span class="text-xl sm:text-2xl md:text-3xl font-black section2-gold-neon">{caseData.victims.toLocaleString()}건</span>
+              <span class="text-white text-xs sm:text-sm">({caseData.date} 기준)</span>
             </div>
           </div>
         )}
 
         <!-- CTA Buttons -->
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 mb-6">
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 mb-6">
           <a
             href="tel:010-2555-2179"
-            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-10 py-4 text-white text-base font-bold rounded backdrop-blur-md hover:brightness-125 transition-all" style="background-color: rgba(139, 26, 26, 0.4); border: 1px solid rgba(255,255,255,0.15);"
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 sm:px-10 py-3.5 sm:py-4 text-white text-sm sm:text-base font-bold rounded backdrop-blur-md hover:brightness-125 transition-all" style="background-color: rgba(139, 26, 26, 0.4); border: 1px solid rgba(255,255,255,0.15);"
           >
             무료상담: 010-2555-2179
           </a>
           <a
             href="#cta-section"
-            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-10 py-4 text-white text-base font-bold rounded backdrop-blur-md hover:brightness-125 transition-all" style="background-color: rgba(255, 42, 68, 0.4); border: 1px solid rgba(255,255,255,0.15);"
+            class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 sm:px-10 py-3.5 sm:py-4 text-white text-sm sm:text-base font-bold rounded backdrop-blur-md hover:brightness-125 transition-all" style="background-color: rgba(255, 42, 68, 0.4); border: 1px solid rgba(255,255,255,0.15);"
           >
             피해사실 접수 바로가기
           </a>
@@ -219,8 +220,24 @@ const schema = [
   <!-- Sticky Bottom Bar -->
   <div id="sticky-bar" class="fixed bottom-0 left-0 right-0 z-50" style="will-change:transform;">
     <div class="border-t border-white/[0.1] shadow-[0_-4px_30px_rgba(0,0,0,0.4)] backdrop-blur-xl" style="background-color: rgba(15, 17, 21, 0.45);">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
-        <div class="flex items-center justify-center gap-4">
+      <div class="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 py-2.5 sm:py-3">
+        <!-- Mobile layout -->
+        <div class="flex sm:hidden items-center justify-between gap-2">
+          <div class="flex items-center gap-1.5 min-w-0">
+            <img src="/images/clock-icon.png" alt="" class="w-4 h-4 shrink-0" />
+            <span class="text-[11px] font-bold text-crimson truncate">{caseData.title.replace(/ 사칭.*/, '')} 긴급상담</span>
+          </div>
+          <div class="flex items-center gap-1.5 shrink-0">
+            <a href="tel:010-2555-2179" class="px-3 py-2 text-white text-[11px] font-bold rounded-lg backdrop-blur-md transition-all" style="background-color: rgba(139, 26, 26, 0.4); border: 1px solid rgba(255,255,255,0.1);">
+              전화상담
+            </a>
+            <a href="#cta-section" class="px-3 py-2 text-white text-[11px] font-bold rounded-lg backdrop-blur-md transition-all" style="background-color: rgba(255, 42, 68, 0.4); border: 1px solid rgba(255,255,255,0.1);">
+              피해접수
+            </a>
+          </div>
+        </div>
+        <!-- Desktop layout -->
+        <div class="hidden sm:flex items-center justify-center gap-4">
           <img src="/images/clock-icon.png" alt="" class="w-5 h-5 shrink-0" />
           <span class="text-sm font-bold text-crimson whitespace-nowrap">{caseData.title.replace(/ 사칭.*/, '')}, 사기피해 긴급상담</span>
           <span class="text-sm font-bold text-crimson">|</span>
@@ -247,15 +264,17 @@ const schema = [
     <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 md:pt-24 pb-10 md:pb-14">
       <!-- Double quotation open -->
       <div class="text-center mb-6">
-        <span class="text-5xl md:text-7xl text-white/20 font-serif leading-none select-none">&ldquo;</span>
+        <span class="text-4xl sm:text-5xl md:text-7xl text-white/20 font-serif leading-none select-none">&ldquo;</span>
       </div>
 
       <!-- Heading text -->
-      <div class="text-center space-y-2 md:space-y-3 mb-6">
-        <!-- Line 1 -->
-        <p class="text-3xl md:text-5xl text-white">사기 당한 돈, <strong class="font-black">포기하지 마세요.</strong></p>
+      <div class="text-center space-y-2 md:space-y-3 mb-4 sm:mb-6">
+        <!-- Line 1: Typing animation -->
+        <p class="text-2xl sm:text-3xl md:text-5xl text-white min-h-[36px] sm:min-h-[44px] md:min-h-[64px] flex items-center justify-center">
+          <span id="sec2-typing" class="font-black"></span><span class="typing-cursor text-white/60">|</span>
+        </p>
         <!-- Line 2 -->
-        <p class="text-4xl md:text-6xl font-black"><span class="text-crimson section2-neon-text">되찾을 수 있습니다.</span></p>
+        <p class="text-3xl sm:text-4xl md:text-6xl font-black"><span class="text-crimson section2-neon-text">되찾을 수 있습니다.</span></p>
         <!-- Line 3 & 4 -->
         <div class="mt-8 md:mt-12 space-y-0.5">
           <p class="text-xs md:text-sm text-white/50">피해 발생 직후 골든타임 이내에 올바른 방향으로 대응하면</p>
@@ -264,14 +283,14 @@ const schema = [
       </div>
 
       <!-- Double quotation close -->
-      <div class="text-center mb-10">
-        <span class="text-5xl md:text-7xl text-white/20 font-serif leading-none select-none">&rdquo;</span>
+      <div class="text-center mb-6 sm:mb-10">
+        <span class="text-4xl sm:text-5xl md:text-7xl text-white/20 font-serif leading-none select-none">&rdquo;</span>
       </div>
 
       <!-- Sub label -->
       <div class="inline-flex flex-col items-center mb-8 w-full">
         <div class="inline-flex flex-col items-stretch mx-auto">
-          <p class="text-3xl md:text-4xl font-bold tracking-wider mb-3 section2-gold-neon">피해금 회복 사례</p>
+          <p class="text-2xl sm:text-3xl md:text-4xl font-bold tracking-wider mb-3 section2-gold-neon">피해금 회복 사례</p>
           <div class="h-px section2-gold-border-neon"></div>
         </div>
       </div>
@@ -282,7 +301,7 @@ const schema = [
       <div id="card-slider" class="flex gap-4 md:gap-6 overflow-hidden px-4 sm:px-6">
         <div id="card-track" class="flex gap-4 md:gap-6 shrink-0 will-change-transform">
           {[1,2,3,4,5,6,7,8,9,10,11,1,2,3,4,5,6,7,8,9,10,11].map((n) => (
-            <div class="shrink-0 w-[260px] md:w-[320px]">
+            <div class="shrink-0 w-[200px] sm:w-[260px] md:w-[320px]">
               <img
                 src={`/images/section2-process/card${n}.png`}
                 alt={`피해금 회복 사례 ${n}`}
@@ -304,39 +323,73 @@ const schema = [
     <img src="/images/section3-warning/pc_section3_bg.png" alt="" class="absolute inset-0 w-full h-full object-cover hidden sm:block" />
     <div class="absolute inset-0 bg-black/70"></div>
 
-    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24">
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-24">
       <!-- Section label -->
       <div class="flex justify-center mb-6">
-        <span class="px-5 py-2 text-xs font-bold tracking-widest rounded-full section2-gold-neon section2-gold-border-badge">골든타임 경고</span>
+        <span class="px-5 py-2 rounded-full section2-gold-border-badge"><span class="text-xs font-bold tracking-widest section2-gold-neon">골든타임 경고</span></span>
       </div>
 
       <!-- Title -->
-      <h2 class="text-4xl md:text-5xl font-black text-white text-center mb-10">골든타임은 이미 시작됐습니다</h2>
+      <h2 class="text-2xl sm:text-4xl md:text-5xl font-black text-white text-center mb-6 sm:mb-10">골든타임은 이미 시작됐습니다</h2>
 
       <!-- Subtitle -->
-      <div class="text-center mb-5 space-y-1">
-        <p class="text-xl md:text-2xl text-white/50">경찰 신고는 <strong class="text-white font-bold">범인 검거</strong>가 목적입니다.</p>
-        <p class="text-xl md:text-2xl text-white/50">금융사기는 <strong class="text-white font-bold">피해금 회수</strong>가 목적입니다.</p>
+      <div class="text-center mb-4 sm:mb-5 space-y-1">
+        <p class="text-base sm:text-xl md:text-2xl text-white/50">경찰 신고는 <strong class="text-white font-bold">범인 검거</strong>가 목적입니다.</p>
+        <p class="text-base sm:text-xl md:text-2xl text-white/50">금융사기는 <strong class="text-white font-bold">피해금 회수</strong>가 목적입니다.</p>
       </div>
-      <p class="text-2xl md:text-3xl font-bold text-center mb-14 section2-gold-neon">목표가 다르면, 대응도 달라야 합니다.</p>
+      <p class="text-lg sm:text-2xl md:text-3xl font-bold text-center mb-8 sm:mb-14 section2-gold-neon">목표가 다르면, 대응도 달라야 합니다.</p>
 
       <!-- Two comparison cards -->
-      <div class="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-4 md:gap-0 mb-14 items-stretch">
+      <div class="grid grid-cols-1 md:grid-cols-[1fr_auto_1fr] gap-6 md:gap-0 mb-8 sm:mb-14 items-stretch">
 
-        <!-- Left card: 포기 -->
-        <div class="rounded-xl border border-red-500/30 p-6 md:p-8" style="background-color: rgba(60, 10, 10, 0.6);">
-          <div class="flex items-center gap-2 mb-5">
-            <div class="w-7 h-7 rounded-full bg-red-500/20 border border-red-500/30 flex items-center justify-center">
-              <span class="text-red-400 font-bold text-xs">✕</span>
+        <!-- Left card: 포기 (flip card) -->
+        <div id="flip-card" class="flip-card cursor-pointer" onclick="this.classList.toggle('flipped')">
+          <div class="flip-card-inner">
+            <!-- Front: 포기 -->
+            <div class="flip-card-front rounded-xl border border-red-500/30 p-6 md:p-8" style="background-color: rgba(60, 10, 10, 0.6);">
+              <div class="flex items-center gap-2 mb-5">
+                <div class="w-7 h-7 rounded-full bg-red-500/20 border border-red-500/30 flex items-center justify-center">
+                  <span class="text-red-400 font-bold text-xs">✕</span>
+                </div>
+                <span class="text-xs text-white/40">포기하고 기다린다</span>
+              </div>
+              <h3 class="text-xl md:text-2xl font-black text-red-400 leading-tight mb-5">흔적 소멸<br/>영구 손실</h3>
+              <ul class="space-y-2.5 text-xs md:text-sm text-white/40">
+                <li class="flex items-start gap-2"><span class="text-white/20 mt-0.5">&#8226;</span>자금세탁 완료 → 추적 불가</li>
+                <li class="flex items-start gap-2"><span class="text-white/20 mt-0.5">&#8226;</span>계좌 정보 · 로그 자동 삭제</li>
+                <li class="flex items-start gap-2"><span class="text-white/20 mt-0.5">&#8226;</span>사기꾼에게 도피 시간 제공</li>
+              </ul>
+              <div class="flip-hint flex items-center justify-center gap-1.5 mt-4">
+                <svg class="w-3 h-3 text-white flip-hint-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>
+                <span class="text-[10px] text-white section2-neon-text">탭하여 뒤집기</span>
+              </div>
             </div>
-            <span class="text-xs text-white/40">포기하고 기다린다</span>
+            <!-- Back: 경고 상세 -->
+            <div class="flip-card-back rounded-xl border border-red-500/30 p-6 md:p-8" style="background-color: rgba(30, 30, 30, 0.95);">
+              <!-- Warning icon -->
+              <div class="flex justify-center mb-3">
+                <div class="w-8 h-8 rounded-lg bg-yellow-500 flex items-center justify-center">
+                  <span class="text-black font-black text-base">!</span>
+                </div>
+              </div>
+              <!-- Title -->
+              <p class="text-sm md:text-base font-black text-white text-center mb-0.5">지금 이 선택이</p>
+              <p class="text-base md:text-lg font-black text-crimson text-center mb-2.5 section2-neon-text">돈을 영원히 잃게 만듭니다</p>
+              <!-- Description -->
+              <p class="text-[10px] md:text-xs text-white/70 font-bold text-center leading-relaxed mb-3">사기범은 지금 이 순간에도 자금을 세탁하고 있습니다.<br/>신고를 미룰수록, 흔적은 사라지고 회수는 멀어집니다.</p>
+              <!-- Gray box -->
+              <div class="rounded-lg p-3 mb-3" style="background-color: rgba(200, 200, 200, 0.15);">
+                <ul class="space-y-1.5 text-[10px] md:text-xs text-white font-bold">
+                  <li>· 아무것도 안 하면 → 자금세탁 완료, 추적 불가</li>
+                  <li>· 기다리면 → 계좌 정보·로그 자동 삭제</li>
+                  <li>· 포기하면 → 사기꾼에게 도피 시간만 줍니다</li>
+                </ul>
+              </div>
+              <!-- Bottom text -->
+              <p class="text-xs md:text-sm font-black text-crimson text-center section2-neon-text">움직이지 않으면 아무것도 바뀌지 않습니다.</p>
+              <p class="text-[10px] text-white/20 text-center mt-2">클릭하여 뒤집기</p>
+            </div>
           </div>
-          <h3 class="text-xl md:text-2xl font-black text-red-400 leading-tight mb-5">흔적 소멸<br/>영구 손실</h3>
-          <ul class="space-y-2.5 text-xs md:text-sm text-white/40">
-            <li class="flex items-start gap-2"><span class="text-white/20 mt-0.5">&#8226;</span>자금세탁 완료 → 추적 불가</li>
-            <li class="flex items-start gap-2"><span class="text-white/20 mt-0.5">&#8226;</span>계좌 정보 · 로그 자동 삭제</li>
-            <li class="flex items-start gap-2"><span class="text-white/20 mt-0.5">&#8226;</span>사기꾼에게 도피 시간 제공</li>
-          </ul>
         </div>
 
         <!-- Center label with vertical lines -->
@@ -349,40 +402,74 @@ const schema = [
           </div>
         </div>
 
-        <!-- Right card: 대응 -->
-        <div class="rounded-xl border border-emerald-500/30 p-6 md:p-8" style="background-color: rgba(10, 60, 30, 0.6);">
-          <div class="flex items-center gap-2 mb-5">
-            <div class="w-7 h-7 rounded-full bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center">
-              <span class="text-emerald-400 font-bold text-xs">&#10003;</span>
+        <!-- Right card: 대응 (flip) -->
+        <div class="flip-card flip-card-green cursor-pointer" onclick="this.classList.toggle('flipped')">
+          <div class="flip-card-inner">
+            <!-- Front: 대응 -->
+            <div class="flip-card-front rounded-xl border border-emerald-500/30 p-6 md:p-8" style="background-color: rgba(10, 60, 30, 0.6);">
+              <div class="flex items-center gap-2 mb-5">
+                <div class="w-7 h-7 rounded-full bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center">
+                  <span class="text-emerald-400 font-bold text-xs">&#10003;</span>
+                </div>
+                <span class="text-xs text-white/40">지금 대응한다</span>
+              </div>
+              <h3 class="text-xl md:text-2xl font-black text-emerald-400 leading-tight mb-5">즉시 계좌 동결<br/>자금 추적 착수</h3>
+              <ul class="space-y-2.5 text-xs md:text-sm text-white/40">
+                <li class="flex items-start gap-2"><span class="text-white/20 mt-0.5">&#8226;</span>피해 계좌 즉시 지급정지 신청</li>
+                <li class="flex items-start gap-2"><span class="text-white/20 mt-0.5">&#8226;</span>자금 이동 경로 법적 추적</li>
+                <li class="flex items-start gap-2"><span class="text-white/20 mt-0.5">&#8226;</span>가압류 · 강제집행 설계</li>
+              </ul>
+              <div class="flip-hint flex items-center justify-center gap-1.5 mt-4">
+                <svg class="w-3 h-3 text-white flip-hint-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0114.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0020.49 15"/></svg>
+                <span class="text-[10px] text-white section2-neon-text">탭하여 뒤집기</span>
+              </div>
             </div>
-            <span class="text-xs text-white/40">지금 대응한다</span>
+            <!-- Back: 지금 대응하면 되찾을 수 있습니다 -->
+            <div class="flip-card-back rounded-xl border border-emerald-500/30 p-6 md:p-8" style="background-color: rgba(15, 30, 60, 0.95);">
+              <!-- Shield icon -->
+              <div class="flex justify-center mb-3">
+                <div class="w-10 h-10 rounded-full flex items-center justify-center" style="background: linear-gradient(135deg, #3B82F6, #1D4ED8);">
+                  <span class="text-white font-black text-lg">✓</span>
+                </div>
+              </div>
+              <!-- Title -->
+              <p class="text-sm md:text-base font-black text-white text-center mb-0.5">지금 대응하면</p>
+              <p class="text-base md:text-lg font-black text-center mb-2" style="color: #60A5FA;">되찾을 수 있습니다</p>
+              <!-- Sub title -->
+              <p class="text-[10px] md:text-xs text-white/70 font-bold text-center leading-relaxed mb-3">골든타임 안에 접수된 사건의<br/>회수 성공률은 5배 이상 높습니다.</p>
+              <!-- White box -->
+              <div class="rounded-lg p-3 mb-3" style="background-color: rgba(255, 255, 255, 0.95);">
+                <ul class="space-y-2 text-[10px] md:text-xs font-bold" style="color: #1a1a1a;">
+                  <li>· 피해 계좌 즉시 지급정지 신청</li>
+                  <li>· 자금 이동 경로 법적 추적 착수</li>
+                  <li>· 가압류 · 강제집행 설계 시작</li>
+                </ul>
+              </div>
+              <!-- Bottom text -->
+              <p class="text-xs md:text-sm font-black text-center" style="color: #60A5FA;">정확하고 빠른대응은 필수입니다.</p>
+              <p class="text-[10px] text-white/20 text-center mt-2">클릭하여 뒤집기</p>
+            </div>
           </div>
-          <h3 class="text-xl md:text-2xl font-black text-emerald-400 leading-tight mb-5">즉시 계좌 동결<br/>자금 추적 착수</h3>
-          <ul class="space-y-2.5 text-xs md:text-sm text-white/40">
-            <li class="flex items-start gap-2"><span class="text-white/20 mt-0.5">&#8226;</span>피해 계좌 즉시 지급정지 신청</li>
-            <li class="flex items-start gap-2"><span class="text-white/20 mt-0.5">&#8226;</span>자금 이동 경로 법적 추적</li>
-            <li class="flex items-start gap-2"><span class="text-white/20 mt-0.5">&#8226;</span>가압류 · 강제집행 설계</li>
-          </ul>
         </div>
       </div>
 
       <!-- Warning notice -->
-      <div class="rounded-xl p-5 md:p-6 mb-10 section2-gold-border-badge" style="background-color: rgba(255,255,255,0.03);">
-        <div class="flex items-start gap-3">
-          <img src="/images/clock-icon.png" alt="" class="w-6 h-6 mt-0.5 shrink-0" />
+      <div class="rounded-xl p-4 sm:p-5 md:p-6 mb-6 sm:mb-10 section2-gold-border-badge" style="background-color: rgba(255,255,255,0.03);">
+        <div class="flex items-start gap-2.5 sm:gap-3">
+          <img src="/images/clock-icon.png" alt="" class="w-5 h-5 sm:w-6 sm:h-6 mt-0.5 shrink-0" />
           <div>
-            <p class="text-sm md:text-base font-bold mb-1 section2-gold-neon">피해 발생 후 시간이 지날수록 회수율은 급격히 낮아집니다</p>
-            <p class="text-xs md:text-sm text-white/40">72시간 이내 대응 시 회수 가능성 최대. 지금 이 순간이 골든타임입니다.</p>
+            <p class="text-xs sm:text-sm md:text-base font-bold mb-1 section2-gold-neon">피해 발생 후 시간이 지날수록 회수율은 급격히 낮아집니다</p>
+            <p class="text-[11px] sm:text-xs md:text-sm text-white/40">72시간 이내 대응 시 회수 가능성 최대. 지금 이 순간이 골든타임입니다.</p>
           </div>
         </div>
       </div>
 
       <!-- CTA button with countdown -->
-      <a href="tel:010-2555-2179" class="block w-full py-5 rounded-lg transition-all hover:brightness-125" style="background-color: rgba(255, 42, 68, 0.7);">
-        <div class="flex items-center justify-center gap-4">
-          <span class="text-white text-lg font-bold">무료로 지금 상담받기</span>
-          <span class="text-white/30 text-lg">|</span>
-          <div class="inline-flex items-center gap-1 text-2xl md:text-3xl font-black tabular-nums font-mono">
+      <a href="tel:010-2555-2179" class="block w-full py-4 sm:py-5 rounded-lg transition-all hover:brightness-125" style="background-color: rgba(255, 42, 68, 0.7);">
+        <div class="flex items-center justify-center gap-2 sm:gap-4">
+          <span class="text-white text-sm sm:text-lg font-bold">무료로 지금 상담받기</span>
+          <span class="text-white/30 text-sm sm:text-lg">|</span>
+          <div class="inline-flex items-center gap-1 text-xl sm:text-2xl md:text-3xl font-black tabular-nums font-mono">
             <span id="countdown-h" class="text-white">24</span><span class="text-white/40">:</span>
             <span id="countdown-m" class="text-white">00</span><span class="text-white/40">:</span>
             <span id="countdown-s" class="text-white">00</span>
@@ -407,7 +494,7 @@ const schema = [
         <span class="text-[10px] font-bold uppercase tracking-[0.25em] text-crimson neon-text">REPORT</span>
         <div class="w-8 h-px bg-crimson neon-bar"></div>
       </div>
-      <h2 class="text-3xl md:text-4xl font-bold text-white mb-10 text-center">"<span class="keyword-highlight">{caseData.title.replace(/ 사칭.*/, '')}</span>" 사칭 사기 피해 접수</h2>
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6 sm:mb-10 text-center">"<span class="keyword-highlight">{caseData.title.replace(/ 사칭.*/, '')}</span>" 사칭 사기 피해 접수</h2>
 
       <div class="flex flex-col lg:flex-row gap-6 lg:gap-8 items-start">
 
@@ -432,7 +519,7 @@ const schema = [
             <span class="w-2 h-2 rounded-full bg-crimson neon-dot"></span>
             <span class="text-[10px] font-bold uppercase tracking-[0.25em] text-crimson neon-text">IMMEDIATE ACTION REQUIRED</span>
           </div>
-          <h2 class="text-2xl md:text-3xl font-bold text-white mb-3">당신이 망설이는 <span class="text-crimson">1분</span>,<br/>사기꾼의 자금 세탁이 끝납니다.</h2>
+          <h2 class="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3">당신이 망설이는 <span class="text-crimson">1분</span>,<br/>사기꾼의 자금 세탁이 끝납니다.</h2>
           <p class="text-white/60 text-sm">접수 즉시 데이 법률사무소 전담팀이 초기 대응 및 자산 추적을 시작합니다.</p>
         </div>
 
@@ -519,7 +606,7 @@ const schema = [
         <span class="text-[10px] font-bold uppercase tracking-[0.25em] text-crimson neon-text">FAQ</span>
         <div class="w-8 h-px bg-crimson neon-bar"></div>
       </div>
-      <h2 class="text-3xl md:text-4xl font-bold text-white mb-10 text-center">자주 묻는 질문</h2>
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6 sm:mb-10 text-center">자주 묻는 질문</h2>
 
       <div class="space-y-3" id="faq-list">
         <!-- FAQ 1 -->
@@ -603,11 +690,57 @@ const schema = [
     </div>
   </section>
 
+  <!-- Bottom spacer for sticky bar -->
+  <div class="h-16 sm:h-14"></div>
+
   <!-- Section 6: Footer -->
   <Footer slot="footer" siteName={siteName} />
 </BaseLayout>
 
 <script>
+  // Section 2: Typing animation
+  (() => {
+    const el = document.getElementById('sec2-typing');
+    if (!el) return;
+    const phrases = [
+      '사기 당한 돈, 포기하지 마세요.',
+      '올바른 방법으로 대응하면',
+      '골든타임 안에 움직이면',
+    ];
+    let phraseIdx = 0;
+    let charIdx = 0;
+    let deleting = false;
+    const typeSpeed = 80;
+    const deleteSpeed = 40;
+    const pauseAfterType = 1800;
+    const pauseAfterDelete = 400;
+
+    function tick() {
+      const current = phrases[phraseIdx];
+      if (!deleting) {
+        el!.textContent = current.slice(0, charIdx + 1);
+        charIdx++;
+        if (charIdx >= current.length) {
+          setTimeout(() => { deleting = true; tick(); }, pauseAfterType);
+          return;
+        }
+        setTimeout(tick, typeSpeed);
+      } else {
+        el!.textContent = current.slice(0, charIdx);
+        charIdx--;
+        if (charIdx < 0) {
+          deleting = false;
+          charIdx = 0;
+          phraseIdx = (phraseIdx + 1) % phrases.length;
+          setTimeout(tick, pauseAfterDelete);
+          return;
+        }
+        setTimeout(tick, deleteSpeed);
+      }
+    }
+    tick();
+  })();
+
   // Countdown timer — 24h from first visit
   const cdH = document.getElementById('countdown-h');
   const cdM = document.getElementById('countdown-m');
@@ -1137,5 +1270,65 @@ const schema = [
   }
   .feed-scroll::-webkit-scrollbar-thumb:hover {
     background: rgba(255,42,68,0.4);
+  }
+  /* Flip Card 3D */
+  .flip-card {
+    perspective: 1000px;
+    width: 100%;
+  }
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    transition: transform 0.7s cubic-bezier(0.4, 0.0, 0.2, 1);
+    transform-style: preserve-3d;
+  }
+  .flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  .flip-card-front,
+  .flip-card-back {
+    width: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+  .flip-card-back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transform: rotateY(180deg);
+  }
+  /* Hover tilt */
+  .flip-card:not(.flipped):hover .flip-card-inner {
+    transform: rotateY(5deg);
+    box-shadow: -4px 0 20px rgba(255, 42, 68, 0.15);
+  }
+  .flip-card-green:not(.flipped):hover .flip-card-inner {
+    box-shadow: -4px 0 20px rgba(16, 185, 129, 0.15);
+  }
+  .flip-card:not(.flipped):hover .flip-hint {
+    opacity: 1;
+  }
+  .flip-card:not(.flipped):hover .flip-hint-icon {
+    animation: hintSpin 1s ease-in-out;
+  }
+  /* Hint fade in-out */
+  .flip-hint {
+    opacity: 0.5;
+    animation: hintFade 2.5s ease-in-out infinite;
+  }
+  .flip-hint-icon {
+    transition: transform 0.3s ease;
+  }
+  @keyframes hintFade {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+  }
+  @keyframes hintSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
   }
 </style>
