@@ -2,14 +2,14 @@ import type { APIRoute } from 'astro';
 import { cases } from '@/data/cases';
 
 export const GET: APIRoute = async ({ site }) => {
-  const siteUrl = site?.toString() || 'https://day-fintech.co.kr/';
+  const siteUrl = site?.toString() || 'https://www.daylawoffice.co.kr/';
   const siteName = 'DAY 금융사기 피해회복 솔루션';
   const now = new Date().toUTCString();
 
   const items = cases.slice(0, 100).map((c) => `    <item>
       <title>${escapeXml(c.title)}</title>
-      <link>${siteUrl}cases/${c.slug}/</link>
-      <guid isPermaLink="true">${siteUrl}cases/${c.slug}/</guid>
+      <link>${siteUrl}scam/${c.slug}/</link>
+      <guid isPermaLink="true">${siteUrl}scam/${c.slug}/</guid>
       <description>${escapeXml(c.description)}</description>
       <pubDate>${new Date(c.date).toUTCString()}</pubDate>
       <category>${escapeXml(c.category)}</category>

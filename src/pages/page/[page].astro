@@ -49,7 +49,7 @@ const schema = [
       "@type": "ListItem",
       "position": i + 1,
       "name": c.title,
-      "url": `${Astro.site}cases/${c.slug}/`,
+      "url": `${Astro.site}scam/${c.slug}/`,
     })),
   },
   {
@@ -209,7 +209,7 @@ const schema = [
                   </td>
                   <td class="py-3.5 pr-4">
                     <a
-                      href={`/cases/${c.slug}`}
+                      href={`/scam/${c.slug}`}
                       class:list={[
                         'text-sm font-medium group-hover:text-crimson transition-colors',
                         isToday ? 'text-white' : 'text-white/80',
@@ -242,7 +242,7 @@ const schema = [
           {pageCases.map((c, idx) => {
             const isToday = c.date === today;
             return (
-            <a href={`/cases/${c.slug}`}
+            <a href={`/scam/${c.slug}`}
                class:list={[
                  'flex items-center justify-between py-4 gap-3 border-b group',
                  isToday ? 'today-row bg-crimson/[0.04] border-b-crimson/15 border-l-2 border-l-crimson pl-3' : 'border-b-white/[0.04]',

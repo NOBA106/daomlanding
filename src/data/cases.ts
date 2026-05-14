@@ -16,7 +16,7 @@ export interface FraudCase {
 
 // 키워드 name → URL-safe slug 변환
 function toSlug(name: string): string {
-  return encodeURIComponent(name.trim().toLowerCase().replace(/\s+/g, '-'));
+  return encodeURIComponent(name.trim().toLowerCase().replace(/\s+/g, '-')) + 'fraud';
 }
 
 // DB keywords 테이블에서 데이터를 가져와서 FraudCase 형태로 변환
