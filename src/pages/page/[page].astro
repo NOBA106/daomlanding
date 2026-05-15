@@ -205,7 +205,7 @@ const schema = [
                     ]}
                     style={`animation: fadeIn 0.3s ease ${idx * 0.02}s both`}>
                   <td class="py-3.5 pl-4 pr-4 text-sm tabular-nums font-mono">
-                    {isToday ? <span class="text-crimson">{String(totalCases - idx).padStart(2, '0')}</span> : <span class="text-white/25">{String(totalCases - idx).padStart(2, '0')}</span>}
+                    {isToday ? <span class="text-crimson">{String(totalCases - ((currentPage - 1) * PER_PAGE) - idx).padStart(2, '0')}</span> : <span class="text-white/25">{String(totalCases - ((currentPage - 1) * PER_PAGE) - idx).padStart(2, '0')}</span>}
                   </td>
                   <td class="py-3.5 pr-4">
                     <a
@@ -228,7 +228,7 @@ const schema = [
                     <time datetime={c.date}>{c.date}</time>
                   </td>
                   <td class="py-3.5 pr-4 text-sm text-white/25 text-center tabular-nums font-mono">
-                    {(Math.floor(Math.abs(Math.sin(c.id * 127.1)) * 700 + 700)).toLocaleString()}
+                    {(Math.floor(Math.abs(Math.sin((((currentPage - 1) * PER_PAGE) + idx + 1) * 127.1 + c.slug.length * 31.7)) * 700 + 700)).toLocaleString()}
                   </td>
                 </tr>
                 );

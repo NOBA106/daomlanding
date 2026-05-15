@@ -16,7 +16,7 @@ interface Props {
 
 const { caseData } = Astro.props;
 const siteName = 'DAY 금융사기 피해회복 솔루션';
-const keyword = caseData.title.replace(/ 사칭.*/, '');
+const keyword = caseData.title.replace(/ 사칭 사기 피해회복.*/, '');
 const pageUrl = `${Astro.site}scam/${caseData.slug}/`;
 const seoDescription = `${keyword} 사칭 사기 피해를 입으셨나요? 데이 법률사무소가 계좌 동결, 자금 추적, 집단소송을 통해 피해금을 환수합니다. 24시간 무료 상담 010-9032-2179.`;
 
@@ -170,7 +170,7 @@ const schema = [
 
         <!-- Headline 1행: 키워드 + 금융사기 피해(사칭) -->
         <h1 class="leading-[1.3] mb-6 md:mb-8">
-          <span class="text-2xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-black section2-gold-neon">{caseData.title.replace(/ 사칭.*/, '')}</span>
+          <span class="text-2xl sm:text-4xl md:text-5xl lg:text-[3.25rem] font-black section2-gold-neon">{caseData.title.replace(/ 사칭 사기 피해회복.*/, '')}</span>
           <br class="sm:hidden" />
           <span class="text-xl sm:text-3xl md:text-[2.7rem] lg:text-[2.9rem] font-light text-white/70 sm:ml-2">금융사기 피해(사칭)</span>
         </h1>
@@ -225,7 +225,7 @@ const schema = [
         <div class="flex sm:hidden items-center justify-between gap-2">
           <div class="flex items-center gap-1.5 min-w-0">
             <img src="/images/clock-icon.png" alt="" class="w-4 h-4 shrink-0" />
-            <span class="text-[11px] font-bold text-crimson truncate">{caseData.title.replace(/ 사칭.*/, '')} 긴급상담</span>
+            <span class="text-[11px] font-bold text-crimson truncate">{caseData.title.replace(/ 사칭 사기 피해회복.*/, '')} 긴급상담</span>
           </div>
           <div class="flex items-center gap-1.5 shrink-0">
             <a href="tel:010-9032-2179" class="px-3 py-2 text-white text-[11px] font-bold rounded-lg backdrop-blur-md transition-all" style="background-color: rgba(139, 26, 26, 0.4); border: 1px solid rgba(255,255,255,0.1);">
@@ -239,7 +239,7 @@ const schema = [
         <!-- Desktop layout -->
         <div class="hidden sm:flex items-center justify-center gap-4">
           <img src="/images/clock-icon.png" alt="" class="w-5 h-5 shrink-0" />
-          <span class="text-sm font-bold text-crimson whitespace-nowrap">{caseData.title.replace(/ 사칭.*/, '')}, 사기피해 긴급상담</span>
+          <span class="text-sm font-bold text-crimson whitespace-nowrap">{caseData.title.replace(/ 사칭 사기 피해회복.*/, '')}, 사기피해 긴급상담</span>
           <span class="text-sm font-bold text-crimson">|</span>
           <span class="text-sm font-bold text-white whitespace-nowrap">010-9032-2179</span>
           <a href="tel:010-9032-2179" class="px-5 py-2.5 text-white text-xs font-bold rounded-lg backdrop-blur-md transition-all hover:brightness-125" style="background-color: rgba(139, 26, 26, 0.4); border: 1px solid rgba(255,255,255,0.1);">
@@ -494,7 +494,7 @@ const schema = [
         <span class="text-[10px] font-bold uppercase tracking-[0.25em] text-crimson neon-text">REPORT</span>
         <div class="w-8 h-px bg-crimson neon-bar"></div>
       </div>
-      <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6 sm:mb-10 text-center">"<span class="keyword-highlight">{caseData.title.replace(/ 사칭.*/, '')}</span>" 사칭 사기 피해 접수</h2>
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6 sm:mb-10 text-center">"<span class="keyword-highlight">{caseData.title.replace(/ 사칭 사기 피해회복.*/, '')}</span>" 사칭 사기 피해 접수</h2>
 
       <div class="flex flex-col lg:flex-row gap-6 lg:gap-8 items-start">
 
@@ -525,7 +525,7 @@ const schema = [
 
         <!-- Form -->
         <form id="cta-form" class="space-y-5">
-          <input type="hidden" name="keyword" value={caseData.title.replace(/ 사칭.*/, '')} />
+          <input type="hidden" name="keyword" value={caseData.title.replace(/ 사칭 사기 피해회복.*/, '')} />
           <div>
             <label for="name" class="block text-xs font-bold text-white/50 uppercase tracking-wider mb-2">이름</label>
             <input
@@ -613,78 +613,78 @@ const schema = [
         <!-- FAQ 1 -->
         <div class="faq-item rounded-xl border border-white/[0.06] overflow-hidden">
           <button class="faq-toggle w-full flex items-center justify-between px-5 py-4 text-left group" aria-expanded="false">
-            <span class="text-sm font-semibold text-white group-hover:text-crimson transition-colors pr-4">{caseData.title.replace(/ 사칭.*/, '')} 사칭 사기 피해금을 실제로 돌려받을 수 있나요?</span>
+            <span class="text-sm font-semibold text-white group-hover:text-crimson transition-colors pr-4">{caseData.title.replace(/ 사칭 사기 피해회복.*/, '')} 사칭 사기 피해금을 실제로 돌려받을 수 있나요?</span>
             <span class="faq-icon w-6 h-6 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center shrink-0 transition-transform">
               <svg class="w-3 h-3 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </span>
           </button>
           <div class="faq-answer hidden px-5 pb-5">
-            <p class="text-sm text-white/40 leading-relaxed">네, 가능합니다. {caseData.title.replace(/ 사칭.*/, '')} 사칭 사기꾼의 계좌에 자금이 남아 있거나 추적 가능한 자산이 있는 경우, 계좌 동결과 법적 절차를 통해 회수할 수 있습니다. 초동 대응이 빠를수록 회수율은 높아집니다.</p>
+            <p class="text-sm text-white/40 leading-relaxed">네, 가능합니다. {caseData.title.replace(/ 사칭 사기 피해회복.*/, '')} 사칭 사기꾼의 계좌에 자금이 남아 있거나 추적 가능한 자산이 있는 경우, 계좌 동결과 법적 절차를 통해 회수할 수 있습니다. 초동 대응이 빠를수록 회수율은 높아집니다.</p>
           </div>
         </div>
 
         <!-- FAQ 2 -->
         <div class="faq-item rounded-xl border border-white/[0.06] overflow-hidden">
           <button class="faq-toggle w-full flex items-center justify-between px-5 py-4 text-left group" aria-expanded="false">
-            <span class="text-sm font-semibold text-white group-hover:text-crimson transition-colors pr-4">{caseData.title.replace(/ 사칭.*/, '')} 사칭 피해 구제 비용은 얼마나 드나요?</span>
+            <span class="text-sm font-semibold text-white group-hover:text-crimson transition-colors pr-4">{caseData.title.replace(/ 사칭 사기 피해회복.*/, '')} 사칭 피해 구제 비용은 얼마나 드나요?</span>
             <span class="faq-icon w-6 h-6 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center shrink-0 transition-transform">
               <svg class="w-3 h-3 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </span>
           </button>
           <div class="faq-answer hidden px-5 pb-5">
-            <p class="text-sm text-white/40 leading-relaxed">{caseData.title.replace(/ 사칭.*/, '')} 사칭 집단소송의 경우 개별 소송 대비 비용이 크게 절감됩니다. 초기 상담은 무료이며, 구체적인 비용은 피해 규모와 사건 복잡도에 따라 상담 후 안내드립니다.</p>
+            <p class="text-sm text-white/40 leading-relaxed">{caseData.title.replace(/ 사칭 사기 피해회복.*/, '')} 사칭 집단소송의 경우 개별 소송 대비 비용이 크게 절감됩니다. 초기 상담은 무료이며, 구체적인 비용은 피해 규모와 사건 복잡도에 따라 상담 후 안내드립니다.</p>
           </div>
         </div>
 
         <!-- FAQ 3 -->
         <div class="faq-item rounded-xl border border-white/[0.06] overflow-hidden">
           <button class="faq-toggle w-full flex items-center justify-between px-5 py-4 text-left group" aria-expanded="false">
-            <span class="text-sm font-semibold text-white group-hover:text-crimson transition-colors pr-4">{caseData.title.replace(/ 사칭.*/, '')} 사칭 관련 이미 경찰에 신고했는데, 추가로 뭘 해야 하나요?</span>
+            <span class="text-sm font-semibold text-white group-hover:text-crimson transition-colors pr-4">{caseData.title.replace(/ 사칭 사기 피해회복.*/, '')} 사칭 관련 이미 경찰에 신고했는데, 추가로 뭘 해야 하나요?</span>
             <span class="faq-icon w-6 h-6 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center shrink-0 transition-transform">
               <svg class="w-3 h-3 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </span>
           </button>
           <div class="faq-answer hidden px-5 pb-5">
-            <p class="text-sm text-white/40 leading-relaxed">{caseData.title.replace(/ 사칭.*/, '')} 사칭 건으로 경찰 신고만으로는 자산 동결이 자동으로 이루어지지 않습니다. 별도로 법원에 자산 보전 처분을 신청하고, 민사 소송을 병행해야 실질적인 자금 회수가 가능합니다. 수사와 법적 대응을 동시에 진행하는 것이 핵심입니다.</p>
+            <p class="text-sm text-white/40 leading-relaxed">{caseData.title.replace(/ 사칭 사기 피해회복.*/, '')} 사칭 건으로 경찰 신고만으로는 자산 동결이 자동으로 이루어지지 않습니다. 별도로 법원에 자산 보전 처분을 신청하고, 민사 소송을 병행해야 실질적인 자금 회수가 가능합니다. 수사와 법적 대응을 동시에 진행하는 것이 핵심입니다.</p>
           </div>
         </div>
 
         <!-- FAQ 4 -->
         <div class="faq-item rounded-xl border border-white/[0.06] overflow-hidden">
           <button class="faq-toggle w-full flex items-center justify-between px-5 py-4 text-left group" aria-expanded="false">
-            <span class="text-sm font-semibold text-white group-hover:text-crimson transition-colors pr-4">{caseData.title.replace(/ 사칭.*/, '')} 사칭 집단소송에 참여하면 어떤 이점이 있나요?</span>
+            <span class="text-sm font-semibold text-white group-hover:text-crimson transition-colors pr-4">{caseData.title.replace(/ 사칭 사기 피해회복.*/, '')} 사칭 집단소송에 참여하면 어떤 이점이 있나요?</span>
             <span class="faq-icon w-6 h-6 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center shrink-0 transition-transform">
               <svg class="w-3 h-3 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </span>
           </button>
           <div class="faq-answer hidden px-5 pb-5">
-            <p class="text-sm text-white/40 leading-relaxed">{caseData.title.replace(/ 사칭.*/, '')} 사칭 피해자들이 함께 소송에 참여하면 비용 분담으로 개인 부담이 줄고, 다수의 피해 사실이 수사 기관에 더 큰 압박이 됩니다. 또한 피해 규모가 클수록 수사 우선순위가 올라가므로 빠른 진행이 가능합니다.</p>
+            <p class="text-sm text-white/40 leading-relaxed">{caseData.title.replace(/ 사칭 사기 피해회복.*/, '')} 사칭 피해자들이 함께 소송에 참여하면 비용 분담으로 개인 부담이 줄고, 다수의 피해 사실이 수사 기관에 더 큰 압박이 됩니다. 또한 피해 규모가 클수록 수사 우선순위가 올라가므로 빠른 진행이 가능합니다.</p>
           </div>
         </div>
 
         <!-- FAQ 5 -->
         <div class="faq-item rounded-xl border border-white/[0.06] overflow-hidden">
           <button class="faq-toggle w-full flex items-center justify-between px-5 py-4 text-left group" aria-expanded="false">
-            <span class="text-sm font-semibold text-white group-hover:text-crimson transition-colors pr-4">{caseData.title.replace(/ 사칭.*/, '')} 사칭 사건 증거가 부족한데도 진행할 수 있나요?</span>
+            <span class="text-sm font-semibold text-white group-hover:text-crimson transition-colors pr-4">{caseData.title.replace(/ 사칭 사기 피해회복.*/, '')} 사칭 사건 증거가 부족한데도 진행할 수 있나요?</span>
             <span class="faq-icon w-6 h-6 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center shrink-0 transition-transform">
               <svg class="w-3 h-3 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </span>
           </button>
           <div class="faq-answer hidden px-5 pb-5">
-            <p class="text-sm text-white/40 leading-relaxed">{caseData.title.replace(/ 사칭.*/, '')} 사칭 관련 입금 기록, 문자 메시지, 카카오톡 대화 등 기본적인 자료만 있어도 시작할 수 있습니다. 전담팀이 추가 증거 수집과 디지털 포렌식을 지원하므로, 현재 보유한 자료를 기반으로 먼저 상담받으시기 바랍니다.</p>
+            <p class="text-sm text-white/40 leading-relaxed">{caseData.title.replace(/ 사칭 사기 피해회복.*/, '')} 사칭 관련 입금 기록, 문자 메시지, 카카오톡 대화 등 기본적인 자료만 있어도 시작할 수 있습니다. 전담팀이 추가 증거 수집과 디지털 포렌식을 지원하므로, 현재 보유한 자료를 기반으로 먼저 상담받으시기 바랍니다.</p>
           </div>
         </div>
 
         <!-- FAQ 6 -->
         <div class="faq-item rounded-xl border border-white/[0.06] overflow-hidden">
           <button class="faq-toggle w-full flex items-center justify-between px-5 py-4 text-left group" aria-expanded="false">
-            <span class="text-sm font-semibold text-white group-hover:text-crimson transition-colors pr-4">{caseData.title.replace(/ 사칭.*/, '')} 사칭 상담 내용이 외부에 노출될 수 있나요?</span>
+            <span class="text-sm font-semibold text-white group-hover:text-crimson transition-colors pr-4">{caseData.title.replace(/ 사칭 사기 피해회복.*/, '')} 사칭 상담 내용이 외부에 노출될 수 있나요?</span>
             <span class="faq-icon w-6 h-6 rounded-full bg-white/[0.04] border border-white/[0.08] flex items-center justify-center shrink-0 transition-transform">
               <svg class="w-3 h-3 text-white/40" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
             </span>
           </button>
           <div class="faq-answer hidden px-5 pb-5">
-            <p class="text-sm text-white/40 leading-relaxed">{caseData.title.replace(/ 사칭.*/, '')} 사칭 관련 변호사-의뢰인 비밀유지 의무에 따라 모든 상담 내용은 철저히 보호됩니다. 가족이나 직장에 알려지는 일 없이 진행할 수 있으며, 데이터는 보안 서버에서만 관리됩니다.</p>
+            <p class="text-sm text-white/40 leading-relaxed">{caseData.title.replace(/ 사칭 사기 피해회복.*/, '')} 사칭 관련 변호사-의뢰인 비밀유지 의무에 따라 모든 상담 내용은 철저히 보호됩니다. 가족이나 직장에 알려지는 일 없이 진행할 수 있으며, 데이터는 보안 서버에서만 관리됩니다.</p>
           </div>
         </div>
       </div>

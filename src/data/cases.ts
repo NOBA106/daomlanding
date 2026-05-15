@@ -29,10 +29,10 @@ async function fetchCasesFromDB(): Promise<FraudCase[]> {
     return rows.map((row: any) => ({
       id: row.id,
       slug: toSlug(row.name),
-      title: `${row.name} 사칭 사기`,
+      title: `${row.name} 사칭 사기 피해회복 솔루션`,
       status: '사건진행중' as const,
       date: new Date(row.created_at).toISOString().slice(0, 10),
-      description: `${row.name}을(를) 사칭하여 투자금을 편취한 사기 사건입니다. 피해자들은 높은 수익률을 약속받고 투자금을 입금하였으나 출금이 차단되었습니다.`,
+      description: `${row.name} 투자사기 피해 사건입니다. 피해자들은 높은 수익률을 약속받고 투자금을 입금하였으나 출금이 차단되었습니다.`,
       category: '사칭사기',
       victims: row.receipt_count,
       amount: '',
