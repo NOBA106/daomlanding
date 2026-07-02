@@ -139,10 +139,10 @@ const schema = [
   </Fragment>
   <!-- Section 1: HERO — 풀와이드 히어로 -->
   <section class="relative border-b border-white/[0.06] overflow-hidden min-h-screen flex flex-col">
-    <!-- Background image — mobile -->
-    <img src="/images/section1-hero/m_main_bg.jpg" alt="" class="absolute inset-0 w-full h-full object-cover sm:hidden" />
+    <!-- Background image — mobile (decorative, CSS background so crawlers don't pick it as representative image) -->
+    <div aria-hidden="true" class="absolute inset-0 bg-cover bg-center sm:hidden" style="background-image:url('/images/section1-hero/m_main_bg.jpg')"></div>
     <!-- Background image — desktop -->
-    <img src="/images/section1-hero/pc_main_bg.jpg" alt="" class="absolute inset-0 w-full h-full object-cover hidden sm:block" />
+    <div aria-hidden="true" class="absolute inset-0 bg-cover bg-center hidden sm:block" style="background-image:url('/images/section1-hero/pc_main_bg.jpg')"></div>
     <div class="absolute inset-0 bg-black/40"></div>
     <!-- Vignette -->
     <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_50%,rgba(0,0,0,0.5)_100%)]"></div>
@@ -255,10 +255,10 @@ const schema = [
 
   <!-- Section 2: 피해금 회복 사례 -->
   <section class="relative border-b border-white/[0.06] overflow-hidden">
-    <!-- Background image — mobile -->
-    <img src="/images/section2-process/m_section2_bg.jpg" alt="" class="absolute inset-0 w-full h-full object-cover sm:hidden" />
+    <!-- Background image — mobile (decorative, CSS background so crawlers don't pick it as representative image) -->
+    <div aria-hidden="true" class="absolute inset-0 bg-cover bg-center sm:hidden" style="background-image:url('/images/section2-process/m_section2_bg.jpg')"></div>
     <!-- Background image — desktop -->
-    <img src="/images/section2-process/pc_section2_bg.png" alt="" class="absolute inset-0 w-full h-full object-cover hidden sm:block" />
+    <div aria-hidden="true" class="absolute inset-0 bg-cover bg-center hidden sm:block" style="background-image:url('/images/section2-process/pc_section2_bg.png')"></div>
     <div class="absolute inset-0 bg-black/60"></div>
 
     <div class="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 md:pt-24 pb-10 md:pb-14">
@@ -316,11 +316,11 @@ const schema = [
   </section>
 
   <!-- Section 3: 골든타임 경고 -->
-  <section class="relative border-b border-white/[0.06]">
-    <!-- Background image — mobile -->
-    <img src="/images/section3-warning/m_section3_bg.png" alt="" class="absolute inset-0 w-full h-full object-cover sm:hidden" />
+  <section class="relative border-b border-white/[0.06] overflow-hidden">
+    <!-- Background image — mobile (decorative, CSS background so crawlers don't pick it as representative image) -->
+    <div aria-hidden="true" class="absolute inset-0 bg-cover bg-center sm:hidden" style="background-image:url('/images/section3-warning/m_section3_bg.png')"></div>
     <!-- Background image — desktop -->
-    <img src="/images/section3-warning/pc_section3_bg.png" alt="" class="absolute inset-0 w-full h-full object-cover hidden sm:block" />
+    <div aria-hidden="true" class="absolute inset-0 bg-cover bg-center hidden sm:block" style="background-image:url('/images/section3-warning/pc_section3_bg.png')"></div>
     <div class="absolute inset-0 bg-black/70"></div>
 
     <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-24">
